@@ -1,0 +1,19 @@
+shared:
+    image: node:6
+
+jobs:
+    A:
+        steps:
+            - echo: echo test
+        requires: [~commit, ~pr]
+
+    # B is detached
+    B:
+        steps:
+            - echo: echo test
+
+    # C will run after B
+    C:
+        steps:
+            - echo: echo test
+        requires: [B]
