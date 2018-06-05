@@ -1,0 +1,14 @@
+shared:
+    image: node:6
+
+jobs:
+    A:
+        steps:
+            - echo: echo test
+        requires: [~commit, ~pr]
+
+    # B will run when the staging job of pipeline 123 succeeds
+    B:
+        steps:
+            - echo: echo test
+        requires: [~sd@123:staging]
